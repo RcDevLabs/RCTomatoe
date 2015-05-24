@@ -1,15 +1,23 @@
 angular.module('rcTomatoe', [])
 .controller('MainCtrl', function($rootScope, $scope, $timeout){
-	$scope.startTimer = function(){
+	var Timer = this;
+	Timer.startTimer = function(){
 		$rootScope.$broadcast('timer-started')
 	}
-	$scope.pauseTimer = function(){
-		$rootScope.$broadcast('timer-paused')
+	Timer.pauseTimer = function(currTime){
+		$rootScope.$broadcast('timer-paused', {currentTime: currTime})
 	}
-	$scope.resumeTimer = function(){
+	Timer.resumeTimer = function(){
 		$rootScope.$broadcast('timer-resumed')
 	}
-	$scope.endTimer = function(){
+	Timer.endTimer = function(){
 		$rootScope.$broadcast('timer-ended')
 	}
-});
+	$scope.$on('timer-started', function(event, args){
+		alert('iniciou');
+	})
+	$scope.$on('timer-paused', function(event, args){
+		console.log("Pausing at ", args.currentTime)
+	})
+})
+;

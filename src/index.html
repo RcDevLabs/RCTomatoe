@@ -12,10 +12,10 @@
 </head>
 <body ng-app="rcTomatoe">
 
-<div id="rcTomatoe">
+<div id="rcTomatoe" ng-controller="MainCtrl as timer">
   <div id="timer">00:00</div>
   <div id="controls">
-    <button class="btn btn-green">START</button>
+    <button class="btn btn-green" ng-click="timer.startTimer()">START</button>
     <button class="btn btn-green">STOP</button>
   </div>
   <div id="currentTask"></div>
