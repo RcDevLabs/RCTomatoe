@@ -10,9 +10,16 @@
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body>
+<body ng-app="rcTomatoe">
 
-<p>Este é um projeto Giovanna. Adicione uma library na pasta /lib (ex: semantic-ui) e comece a brincadeira.</p>
+<div id="rcTomatoe">
+  <div id="timer">00:00</div>
+  <div id="controls">
+    <button class="btn btn-green">START</button>
+    <button class="btn btn-green">STOP</button>
+  </div>
+  <div id="currentTask"></div>
+</div>
 
 
 	<!-- bower:js -->

@@ -1,1 +1,1 @@
-//main.js file
+angular.module('rcTomatoe', []);

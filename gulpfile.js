@@ -103,7 +103,7 @@ gulp.task('serve', connect.server({
   port: 1337,
   livereload: true,
   open: {
-    browser: 'chrome' //OS X browser: 'Google Chrome'
+    browser: 'firefox' //OS X browser: 'Google Chrome'
   }
 }));
 
