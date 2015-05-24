@@ -1,6 +1,16 @@
 angular.module('rcTomatoe', [])
-.controller('MainCtrl', function($rootScope, $scope, $timeout){
-	var Timer = this;
+.controller('MainCtrl', function(timerFactory, $scope, $timeout){
+	$scope.timer = timerFactory;
+	
+	$scope.$on('timer-started', function(event, args){
+		alert('iniciou');
+	})
+	$scope.$on('timer-paused', function(event, args){
+		console.log("Pausing at ", args.currentTime)
+	})
+})
+.factory('timerFactory', function($rootScope){
+	var Timer = {};
 	Timer.startTimer = function(){
 		$rootScope.$broadcast('timer-started')
 	}
@@ -13,11 +23,6 @@ angular.module('rcTomatoe', [])
 	Timer.endTimer = function(){
 		$rootScope.$broadcast('timer-ended')
 	}
-	$scope.$on('timer-started', function(event, args){
-		alert('iniciou');
-	})
-	$scope.$on('timer-paused', function(event, args){
-		console.log("Pausing at ", args.currentTime)
-	})
+	return Timer;
 })
 ;
