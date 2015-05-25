@@ -1,28 +1,20 @@
-angular.module('rcTomatoe', [])
-.controller('MainCtrl', function(timerFactory, $scope, $timeout){
-	$scope.timer = timerFactory;
-	
-	$scope.$on('timer-started', function(event, args){
-		alert('iniciou');
-	})
-	$scope.$on('timer-paused', function(event, args){
-		console.log("Pausing at ", args.currentTime)
-	})
-})
-.factory('timerFactory', function($rootScope){
-	var Timer = {};
-	Timer.startTimer = function(){
-		$rootScope.$broadcast('timer-started')
+angular.module('rcTomatoe', ['timer'])
+.controller('MainCtrl', function($scope){
+	$scope.roundNumber = '0';
+	$scope.finished = function(){
+		$scope.roundNumber++
+		if($scope.roundNumber % 5 == 0){
+			alert('pcent 5')
+		}
+		if($scope.pausa == true) {
+			$scope.pausa == false
+		} else {
+			$scope.pausa == true;
+		}
 	}
-	Timer.pauseTimer = function(currTime){
-		$rootScope.$broadcast('timer-paused', {currentTime: currTime})
+	$scope.startTimer = function(){
+		$scope.$broadcast('timer-start');
+		$scope.timerRunning = true;
 	}
-	Timer.resumeTimer = function(){
-		$rootScope.$broadcast('timer-resumed')
-	}
-	Timer.endTimer = function(){
-		$rootScope.$broadcast('timer-ended')
-	}
-	return Timer;
 })
 ;

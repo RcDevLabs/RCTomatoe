@@ -12,10 +12,12 @@
 </head>
 <body ng-app="rcTomatoe">
 
-<div id="rcTomatoe" ng-controller="MainCtrl as timer">
-  <div id="timer">00:00</div>
+<div id="rcTomatoe" ng-controller="MainCtrl">
+This is round number: {{roundNumber}}
+<timer countdown="3" id="timer" interval="1000" finish-callback="finished()" autostart="false" ng-if="!pausa">{{minutes}} : {{seconds}}</timer> 
+<timer countdown="2" id="timer" interval="1000" finish-callback="finished()" autostart="false" ng-if="pausa">{{minutes}} : {{seconds}}</timer> 
   <div id="controls">
-    <button class="btn btn-green" ng-click="timer.startTimer()">START</button>
+    <button class="btn btn-green" ng-click="startTimer()">START</button>
     <button class="btn btn-green">STOP</button>
   </div>
   <div id="currentTask"></div>
